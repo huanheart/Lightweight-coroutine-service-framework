@@ -1,0 +1,158 @@
+20241009 09:02:42.274738Z 47368 INFO  2148509888 - address.cc:108
+20241009 09:02:42.274749Z 47368 INFO  2148509888 - address.cc:108
+20241009 09:02:42.274752Z 47368 INFO  2148509888 - address.cc:108
+20241009 09:02:46.926337Z 47368 INFO   http_server handleClient   !!!  and dealing 19 now  - http_server.cpp:39
+20241009 09:02:47.013952Z 47368 INFO  GET / HTTP/1.1
+Host: 192.168.15.128:9006
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate
+Accept-Language: zh,zh-CN;q=0.9
+
+ - http_server.cpp:55
+20241009 09:02:47.013967Z 47368 INFO  GET / HTTP/1.1 - http_conn.cpp:388
+20241009 09:02:47.013985Z 47368 INFO  Host: 192.168.15.128:9006 - http_conn.cpp:388
+20241009 09:02:47.013986Z 47368 INFO  Connection: keep-alive - http_conn.cpp:388
+20241009 09:02:47.013988Z 47368 INFO  Upgrade-Insecure-Requests: 1 - http_conn.cpp:388
+20241009 09:02:47.013988Z 47368 INFO  oop!unknow header: Upgrade-Insecure-Requests: 1 - http_conn.cpp:346
+20241009 09:02:47.013994Z 47368 INFO  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 - http_conn.cpp:388
+20241009 09:02:47.013995Z 47368 INFO  oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 - http_conn.cpp:346
+20241009 09:02:47.013996Z 47368 INFO  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7 - http_conn.cpp:388
+20241009 09:02:47.013996Z 47368 INFO  oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7 - http_conn.cpp:346
+20241009 09:02:47.013997Z 47368 INFO  Accept-Encoding: gzip, deflate - http_conn.cpp:388
+20241009 09:02:47.013997Z 47368 INFO  oop!unknow header: Accept-Encoding: gzip, deflate - http_conn.cpp:346
+20241009 09:02:47.013998Z 47368 INFO  Accept-Language: zh,zh-CN;q=0.9 - http_conn.cpp:388
+20241009 09:02:47.013998Z 47368 INFO  oop!unknow header: Accept-Language: zh,zh-CN;q=0.9 - http_conn.cpp:346
+20241009 09:02:47.013998Z 47368 INFO   - http_conn.cpp:388
+20241009 09:02:47.014047Z 47368 INFO  request: HTTP/1.1 200 OK
+ - http_conn.cpp:681
+20241009 09:02:47.014048Z 47368 INFO  request: HTTP/1.1 200 OK
+Content-Length:586
+ - http_conn.cpp:681
+20241009 09:02:47.014049Z 47368 INFO  request: HTTP/1.1 200 OK
+Content-Length:586
+Connection:keep-alive
+ - http_conn.cpp:681
+20241009 09:02:47.014049Z 47368 INFO  request: HTTP/1.1 200 OK
+Content-Length:586
+Connection:keep-alive
+
+ - http_conn.cpp:681
+20241009 09:02:47.014236Z 47368 INFO   http_server handleClient   !!!  and dealing 20 now  - http_server.cpp:39
+20241009 09:02:51.631272Z 47368 INFO   read_once return false - http_server.cpp:51
+20241009 09:02:51.631282Z 47368 INFO  20 is close  - http_server.cpp:71
+20241009 09:02:51.631499Z 47368 INFO   read_once return false - http_server.cpp:51
+20241009 09:02:51.631502Z 47368 INFO  19 is close  - http_server.cpp:71
+20241009 09:02:57.855892Z 47368 INFO   http_server handleClient   !!!  and dealing 19 now  - http_server.cpp:39
+20241009 09:02:57.855910Z 47368 INFO  POST /1 HTTP/1.1
+Host: 192.168.15.128:9006
+Connection: keep-alive
+Content-Length: 0
+Cache-Control: max-age=0
+Origin: http://192.168.15.128:9006
+Content-Type: application/x-www-form-urlencoded
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Referer: http://192.168.15.128:9006/
+Accept-Encoding: gzip, deflate
+Accept-Language: zh,zh-CN;q=0.9
+
+ - http_server.cpp:55
+20241009 09:02:57.855913Z 47368 INFO  POST /1 HTTP/1.1 - http_conn.cpp:388
+20241009 09:02:57.855915Z 47368 INFO  Host: 192.168.15.128:9006 - http_conn.cpp:388
+20241009 09:02:57.855916Z 47368 INFO  Connection: keep-alive - http_conn.cpp:388
+20241009 09:02:57.855916Z 47368 INFO  Content-Length: 0 - http_conn.cpp:388
+20241009 09:02:57.855917Z 47368 INFO  Cache-Control: max-age=0 - http_conn.cpp:388
+20241009 09:02:57.855917Z 47368 INFO  oop!unknow header: Cache-Control: max-age=0 - http_conn.cpp:346
+20241009 09:02:57.855918Z 47368 INFO  Origin: http://192.168.15.128:9006 - http_conn.cpp:388
+20241009 09:02:57.855918Z 47368 INFO  oop!unknow header: Origin: http://192.168.15.128:9006 - http_conn.cpp:346
+20241009 09:02:57.855919Z 47368 INFO  Content-Type: application/x-www-form-urlencoded - http_conn.cpp:388
+20241009 09:02:57.855919Z 47368 INFO  oop!unknow header: Content-Type: application/x-www-form-urlencoded - http_conn.cpp:346
+20241009 09:02:57.855919Z 47368 INFO  Upgrade-Insecure-Requests: 1 - http_conn.cpp:388
+20241009 09:02:57.855919Z 47368 INFO  oop!unknow header: Upgrade-Insecure-Requests: 1 - http_conn.cpp:346
+20241009 09:02:57.855920Z 47368 INFO  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 - http_conn.cpp:388
+20241009 09:02:57.855920Z 47368 INFO  oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 - http_conn.cpp:346
+20241009 09:02:57.855920Z 47368 INFO  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7 - http_conn.cpp:388
+20241009 09:02:57.855921Z 47368 INFO  oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7 - http_conn.cpp:346
+20241009 09:02:57.855921Z 47368 INFO  Referer: http://192.168.15.128:9006/ - http_conn.cpp:388
+20241009 09:02:57.855921Z 47368 INFO  oop!unknow header: Referer: http://192.168.15.128:9006/ - http_conn.cpp:346
+20241009 09:02:57.855921Z 47368 INFO  Accept-Encoding: gzip, deflate - http_conn.cpp:388
+20241009 09:02:57.855921Z 47368 INFO  oop!unknow header: Accept-Encoding: gzip, deflate - http_conn.cpp:346
+20241009 09:02:57.855922Z 47368 INFO  Accept-Language: zh,zh-CN;q=0.9 - http_conn.cpp:388
+20241009 09:02:57.855922Z 47368 INFO  oop!unknow header: Accept-Language: zh,zh-CN;q=0.9 - http_conn.cpp:346
+20241009 09:02:57.855922Z 47368 INFO   - http_conn.cpp:388
+20241009 09:02:57.855971Z 47368 INFO  request: HTTP/1.1 200 OK
+ - http_conn.cpp:681
+20241009 09:02:57.855971Z 47368 INFO  request: HTTP/1.1 200 OK
+Content-Length:725
+ - http_conn.cpp:681
+20241009 09:02:57.855971Z 47368 INFO  request: HTTP/1.1 200 OK
+Content-Length:725
+Connection:keep-alive
+ - http_conn.cpp:681
+20241009 09:02:57.855972Z 47368 INFO  request: HTTP/1.1 200 OK
+Content-Length:725
+Connection:keep-alive
+
+ - http_conn.cpp:681
+20241009 09:02:57.856110Z 47368 INFO   http_server handleClient   !!!  and dealing 20 now  - http_server.cpp:39
+20241009 09:03:01.271908Z 47368 INFO  POST /2CGISQL.cgi HTTP/1.1
+Host: 192.168.15.128:9006
+Connection: keep-alive
+Content-Length: 36
+Cache-Control: max-age=0
+Origin: http://192.168.15.128:9006
+Content-Type: application/x-www-form-urlencoded
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Referer: http://192.168.15.128:9006/1
+Accept-Encoding: gzip, deflate
+Accept-Language: zh,zh-CN;q=0.9
+
+user=%E6%B5%8B%E8%AF%95&password=123 - http_server.cpp:55
+20241009 09:03:01.271925Z 47368 INFO  POST /2CGISQL.cgi HTTP/1.1 - http_conn.cpp:388
+20241009 09:03:01.271927Z 47368 INFO  Host: 192.168.15.128:9006 - http_conn.cpp:388
+20241009 09:03:01.271928Z 47368 INFO  Connection: keep-alive - http_conn.cpp:388
+20241009 09:03:01.271928Z 47368 INFO  Content-Length: 36 - http_conn.cpp:388
+20241009 09:03:01.271929Z 47368 INFO  Cache-Control: max-age=0 - http_conn.cpp:388
+20241009 09:03:01.271930Z 47368 INFO  oop!unknow header: Cache-Control: max-age=0 - http_conn.cpp:346
+20241009 09:03:01.271930Z 47368 INFO  Origin: http://192.168.15.128:9006 - http_conn.cpp:388
+20241009 09:03:01.271931Z 47368 INFO  oop!unknow header: Origin: http://192.168.15.128:9006 - http_conn.cpp:346
+20241009 09:03:01.271931Z 47368 INFO  Content-Type: application/x-www-form-urlencoded - http_conn.cpp:388
+20241009 09:03:01.271932Z 47368 INFO  oop!unknow header: Content-Type: application/x-www-form-urlencoded - http_conn.cpp:346
+20241009 09:03:01.271932Z 47368 INFO  Upgrade-Insecure-Requests: 1 - http_conn.cpp:388
+20241009 09:03:01.271932Z 47368 INFO  oop!unknow header: Upgrade-Insecure-Requests: 1 - http_conn.cpp:346
+20241009 09:03:01.271933Z 47368 INFO  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 - http_conn.cpp:388
+20241009 09:03:01.271933Z 47368 INFO  oop!unknow header: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 - http_conn.cpp:346
+20241009 09:03:01.271934Z 47368 INFO  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7 - http_conn.cpp:388
+20241009 09:03:01.271934Z 47368 INFO  oop!unknow header: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7 - http_conn.cpp:346
+20241009 09:03:01.271934Z 47368 INFO  Referer: http://192.168.15.128:9006/1 - http_conn.cpp:388
+20241009 09:03:01.271935Z 47368 INFO  oop!unknow header: Referer: http://192.168.15.128:9006/1 - http_conn.cpp:346
+20241009 09:03:01.271935Z 47368 INFO  Accept-Encoding: gzip, deflate - http_conn.cpp:388
+20241009 09:03:01.271935Z 47368 INFO  oop!unknow header: Accept-Encoding: gzip, deflate - http_conn.cpp:346
+20241009 09:03:01.271936Z 47368 INFO  Accept-Language: zh,zh-CN;q=0.9 - http_conn.cpp:388
+20241009 09:03:01.271936Z 47368 INFO  oop!unknow header: Accept-Language: zh,zh-CN;q=0.9 - http_conn.cpp:346
+20241009 09:03:01.271936Z 47368 INFO   - http_conn.cpp:388
+20241009 09:03:01.271937Z 47368 INFO  user=%E6%B5%8B%E8%AF%95&password=123 - http_conn.cpp:388
+20241009 09:03:01.272021Z 47368 INFO  request: HTTP/1.1 200 OK
+ - http_conn.cpp:681
+20241009 09:03:01.272021Z 47368 INFO  request: HTTP/1.1 200 OK
+Content-Length:742
+ - http_conn.cpp:681
+20241009 09:03:01.272022Z 47368 INFO  request: HTTP/1.1 200 OK
+Content-Length:742
+Connection:keep-alive
+ - http_conn.cpp:681
+20241009 09:03:01.272022Z 47368 INFO  request: HTTP/1.1 200 OK
+Content-Length:742
+Connection:keep-alive
+
+ - http_conn.cpp:681
+20241009 09:03:01.634864Z 47368 INFO   read_once return false - http_server.cpp:51
+20241009 09:03:01.634874Z 47368 INFO  20 is close  - http_server.cpp:71
+20241009 09:03:01.635115Z 47368 INFO   read_once return false - http_server.cpp:51
+20241009 09:03:01.635118Z 47368 INFO  19 is close  - http_server.cpp:71
