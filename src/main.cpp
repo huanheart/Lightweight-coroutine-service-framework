@@ -16,7 +16,7 @@ using namespace std;
 //此目录针对的是my_web的exe文件，而不是与main.cpp的位置也不是与可执行文件的相对位置，跳了一个坑
 const std::string LOGDIR="../logs/";
 
-sylar::IOManager::ptr worker=nullptr;
+// sylar::IOManager::ptr worker=nullptr;
 off_t kRollSize = 500*1000*1000;
 muduo::AsyncLogging * g_asyncLog=nullptr;
 
@@ -36,7 +36,8 @@ void run(string user,string passwd,string database_name,int sql_num ,int port,in
     conn_pool->init("localhost",user,passwd,database_name,3306,sql_num);
     //创建httpserver
 //    http_server* httpserver=new http_server();
-    std::shared_ptr<http_server> httpserver = std::make_shared<http_server>(true,worker.get());
+    // std::shared_ptr<http_server> httpserver = std::make_shared<http_server>(true,worker.get());
+    std::shared_ptr<http_server> httpserver = std::make_shared<http_server>(true);
     ////一定要在调取器创建之后之后new且用智能指针初始化，不能直接new
     /// 否则将会出错terminate called after throwing an instance of 'std::bad_weak_ptr'
     httpserver->m_user=user;
@@ -76,7 +77,7 @@ int main(int argc,char * argv[] )
     string user="root";
     string passwd="lkt20031206";
     string database_name="webserver";
-    worker.reset(new sylar::IOManager(Config::get_instance()->get_thread_num(),false) );
+    // worker.reset(new sylar::IOManager(1,false) );
     sylar::IOManager manager(Config::get_instance()->get_thread_num(),true);
     manager.scheduleLock([=]() {
         run(user, passwd, database_name, Config::get_instance()->get_sql_num(), Config::get_instance()->get_port(), Config::get_instance()->get_proxy());
