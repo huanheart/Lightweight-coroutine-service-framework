@@ -27,7 +27,8 @@
 - [X] 实现简单的http服务
 - [X] 更改http_conn.cpp的Socket更改为封装的Socket，io函数为Socket类封装的io函数
 - [X] 实现提供简单的RPC服务,[详情请看](https://github.com/huanheart/RPCCoroutineServiceFramework)
-
+- [ ] gdb下进入视频页面后回退会出现管道破裂，但是普通运行并不会，找了好久找不到
+- [ ] 解决新new调度器赋值给accept_worker调度器将会整体段错误的情况,m_ioworker并不会出现这个情况
 
 
 ## 运行环境要求
