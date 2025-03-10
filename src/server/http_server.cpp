@@ -50,6 +50,7 @@ void http_server::handleClient(sylar::Socket::ptr client) {
     }
 
     users[client_socket].init(client,m_root,0,m_user,m_password,m_database_name,m_isKeepalive);
+    connectionRAII mysqlcon(&users[client_socket].mysql, Connection_pool::get_instance());
     while(client->isConnected()){
         if(users[client_socket].read_once()==false) {
             LOG_INFO <<" read_once return false";
@@ -57,9 +58,6 @@ void http_server::handleClient(sylar::Socket::ptr client) {
         }
         if(Config::get_instance()->get_close_log()==0) {
             LOG_INFO <<users[client_socket].m_read_buf;
-        }
-        {
-            connectionRAII mysqlcon(&users[client_socket].mysql, Connection_pool::get_instance());
         }
         if(users[client_socket].process()==false) {
             LOG_INFO <<" process return false";

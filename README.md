@@ -61,6 +61,24 @@
     string passwd="root" //你每次使用mysql的密码
     string databasename="yourdb"; //你创建的数据库的名称
     ```
+* mysql部分问题以及解决方案(乌班图22.04版本缺少枚举的解决)
+```cpp
+  494 | enum net_async_status STDCALL
+      |      ^~~~~~~~~~~~~~~~
+/usr/include/mysql/mysql.h:496:6: error: use of enum ‘net_async_status’ without previous declaration
+```
+```cpp
+//找到乌班图下mysql.h的位置，添加这么一句话
+#ifndef DECLARATION_NET_ASYNC_STATUS
+#define DECLARATION_NET_ASYNC_STATUS
+enum net_async_status {
+NET_ASYNC_COMPLETE = 0,
+NET_ASYNC_NOT_READY,
+NET_ASYNC_ERROR,
+NET_ASYNC_COMPLETE_NO_MORE_RESULTS
+};
+#endif
+```
 * 修改main.cpp中run函数的ip地址
     ```cpp
   //将对应192.168.15.128更改为服务器本身的ip地址
@@ -107,6 +125,9 @@
 * ./CoroutineServer           #启动项目
 * 当选择nginx的时候，根据上述文档，应该去到/usr/nginx/sbin先将对应nginx进行启动(./nginx),也要查看当前nginx监听的端口是否被占用
 * 在浏览器输入ip:端口.   **举例192.168.12.23:80**   即访问到对应服务器(若开启CoroutineServer的-n选项为nginx，那么ip地址输入为nginx的ip地址，否则输入CoroutineServer的ip地址+端口,**注意默认需要输入nginx的ip地址，否则访问不到**)
+
+## 关于日志文件
+注意，当前日志文件是隐藏的，默认会生成在logs目录下，通过ls -a选项即可看到当前目录下拥有的日志
 
 ## 如何删除日志文件？
 * 由于日志文件是隐藏的，可能在命令行中不能直接看到，换成ide可能看得到，固然使用如下命令可以删除隐藏文件,
