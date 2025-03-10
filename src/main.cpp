@@ -30,7 +30,7 @@ void run(string user,string passwd,string database_name,int sql_num ,int port,in
 {
 
     Connection_pool * conn_pool=Connection_pool::get_instance();
-    sylar::Address::ptr m_adress=sylar::Address::LookupAnyIPAddress("192.168.15.128:"+to_string(port) );
+    sylar::Address::ptr m_adress=sylar::Address::LookupAnyIPAddress("192.168.15.129:"+to_string(port) );
 
     //数据库连接池
     conn_pool->init("localhost",user,passwd,database_name,3306,sql_num);
@@ -75,7 +75,7 @@ int main(int argc,char * argv[] )
     g_asyncLog = &log;
     muduo::Logger::setOutput(asyncOutput);
     string user="root";
-    string passwd="lkt20031206";
+    string passwd="123456";
     string database_name="webserver";
     // worker.reset(new sylar::IOManager(1,false) );
     sylar::IOManager manager(Config::get_instance()->get_thread_num(),true);
