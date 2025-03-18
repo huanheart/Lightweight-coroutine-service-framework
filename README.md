@@ -29,13 +29,13 @@
 - [X] 实现提供简单的RPC服务,[详情请看](https://github.com/huanheart/RPCCoroutineServiceFramework)
 - [ ] gdb下进入视频页面后回退会出现管道破裂，但是普通运行并不会，找了好久找不到
 - [ ] 解决新new调度器赋值给accept_worker调度器将会整体段错误的情况,m_ioworker并不会出现这个情况
-
+- [ ] 不清楚为什么在http_server.cpp中while()上面初始化数据库连接给到user.mysql会服务器崩溃，即没出作用域会被置空，但是放在while里面就不会出错，很奇怪，目前操作是放在里面的。没有问题
 
 ## 运行环境要求
 
 * 乌班图 22.04
 * boost库（muduo库是基于boost库，固然需要有所依赖）
-* muduo库（因为有用到异步日志）
+* muduo库（因为有用到异步日志,对应muduo.zip在我的dockerinit有，可以直接执行build.sh，然后将对应内容拷贝到/usr/bin其余目录下）
 * mysql 8.0.37 (注意：使用mysql的时候需要让终端处于root模式，否则可能出现mysql没有权限的情况)
 * nginx，具体参考:https://help.fanruan.com/finereport10.0/doc-view-2644.html
 * 有makefile , g++相关工具
@@ -149,3 +149,22 @@ sudo apt-get install wrk
 wrk -t12 -c400 -d30s -H "Connection: keep-alive" http://192.168.15.128:80
 ```
 
+# Docker一键部署
+
+这边已经提供好了dockerfile和docker-compose.yml文件
+
+
+你需要在linux上安装docker等环境
+
+```cpp
+# 安装完docker等环境后在dockerfile所在目录下执行下面命令，便会创建
+docker-compose up -d
+# 使用docker ps查看app-server容器对应的ID，并运行下列命令,进入该容器内部
+# 若docker ps没有容器，使用docker ps -a命令查看隐藏容器，并进行docker start操作即可
+docker exec -it yourid bash
+# 前往/bin目录下
+cd /app/bin
+# 启动项目,默认80端口，参数具体看上面讲解
+# 后续访问linux本机对应端口即可访问到，因为已做对应关系映射和网络互连
+./CoroutineServer 
+```
