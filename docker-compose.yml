@@ -21,12 +21,12 @@ services:
     networks:
       - mynetwork  # 与mysql容器处于同一网络
     volumes:
-      - ./nginx.conf:/usr/nginx/conf/nginx.conf 
-      # 挂载你自己的nginx配置文件，注意，文件路径一定要对，看你nginx.conf在哪里,你必须在linux主机上按照我的说明配置了nginx并修改了nginx.conf
+      - ./dockerinit/nginx.conf:/etc/nginx/nginx.conf 
+      # 挂载dockerinit目录下的nginx.conf，你需要对dockerinit目录下的nginx.conf可能更改一些配置
       # 或者你可以复制我的nginx.conf,然后指定路径挂载上去，也就不需要在部署的机子上安装nginx了 
       # nginx也不映射端口到主机上
-      #  ports:
-      #  - "80:80"  # 映射端口80到主机，便于外部访问nginx
+    ports:
+      - "80:80"  # 映射端口80到主机，便于外部访问nginx
 
   app-server:
     build:
