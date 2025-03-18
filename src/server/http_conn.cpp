@@ -490,8 +490,10 @@ http_conn::HTTP_CODE http_conn::do_request(bool & decide_proxy)
         if(back.index==f_end) //说明没有找到,用户表维护在一个map中
         {
             m_lock.lock();
+	    // std::cout<<"test mysql address "<<mysql<<std::endl;
             int res=mysql_query(mysql,sql_insert); //访问连接的数据库里面是否有记录
-            users.push(name,password);
+	
+	    users.push(name,password);
             m_lock.unlock();
             if(!res) //说明没有，那么直接让他弄到登录界面，先进行一个赋值
                 strcpy(m_url,"/log.html");

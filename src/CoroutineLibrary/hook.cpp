@@ -596,6 +596,7 @@ int setsockopt(int sockfd, int level, int optname, const void *optval, socklen_t
             if(ctx) 
             {
                 const timeval* v = (const timeval*)optval;
+                //std::cout<<(v->tv_sec * 1000 + v->tv_usec / 1000)<<std::endl;
                 ctx->setTimeout(optname, v->tv_sec * 1000 + v->tv_usec / 1000);
             }
         }

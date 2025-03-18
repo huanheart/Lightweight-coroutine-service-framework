@@ -50,7 +50,9 @@ void http_server::handleClient(sylar::Socket::ptr client) {
     }
 
     users[client_socket].init(client,m_root,0,m_user,m_password,m_database_name,m_isKeepalive);
-    connectionRAII mysqlcon(&users[client_socket].mysql, Connection_pool::get_instance());
+    //经测试发现，放在外面初始化user内部数据库连接，经第二次while循环会将user中的mysql置空，不清楚什么原因
+    //connectionRAII mysqlcon(&users[client_socket].mysql, Connection_pool::get_instance());
+    //std::cout<<"now address:   "<<users[client_socket].mysql<<std::endl;
     while(client->isConnected()){
         if(users[client_socket].read_once()==false) {
             LOG_INFO <<" read_once return false";
@@ -59,14 +61,19 @@ void http_server::handleClient(sylar::Socket::ptr client) {
         if(Config::get_instance()->get_close_log()==0) {
             LOG_INFO <<users[client_socket].m_read_buf;
         }
+	
+	connectionRAII mysqlcon(&users[client_socket].mysql, Connection_pool::get_instance());
+	//std::cout<<"enter !!!!:   "<<users[client_socket].mysql<<std::endl;
         if(users[client_socket].process()==false) {
             LOG_INFO <<" process return false";
             goto end;
         }
+
         if(users[client_socket].write()==false) {
             LOG_INFO <<" write return false";
             goto end;
         }
+
     }
 end :
     if(Config::get_instance()->get_close_log()==0) {

@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # 这边目前先将mysql服务和app-server(协程服务框架)放在同一个服务下，后续若使用不同容器配置，可恢复注释
+  #mysql:
+  #  image: mysql:8.0.37
+  #  container_name: localhost   #将mysql命名为localhost，保证不用dockerfile中的mysql_real_connect函数调用为localhost，调用也为这个，减少步骤
+  #  environment:
+  #    MYSQL_ROOT_PASSWORD: 123456  # 设置MySQL的root密码
+  #  volumes:
+  #    - ./dockerinit/init.sql:/docker-entrypoint-initdb.d/init.sql  # 将dockerinit目录下的SQL文件挂载到容器中
+  #  networks:
+  #    - mynetwork
+    # 这里不映射端口
+    # ports:
+    #   - "3306:3306"  # 注释掉或删除这行代码
+
+  nginx:
+    image: nginx:latest  # 使用nginx的最新镜像
+    container_name: nginx
+    networks:
+      - mynetwork  # 与mysql容器处于同一网络
+    volumes:
+      - ./nginx.conf:/usr/nginx/conf/nginx.conf 
+      # 挂载你自己的nginx配置文件，注意，文件路径一定要对，看你nginx.conf在哪里,你必须在linux主机上按照我的说明配置了nginx并修改了nginx.conf
+      # 或者你可以复制我的nginx.conf,然后指定路径挂载上去，也就不需要在部署的机子上安装nginx了 
+      # nginx也不映射端口到主机上
+      #  ports:
+      #  - "80:80"  # 映射端口80到主机，便于外部访问nginx
+
+  app-server:
+    build:
+      context: .
+      dockerfile: Dockerfile  # 从当前目录的 Dockerfile 构建容器
+    container_name: app-server
+    networks:
+      - mynetwork  # 加入同一个网络，便于与mysql和nginx通讯
+        # volumes:
+      #  - .:/app  # 将当前目录挂载到容器的/app目录下，这里先不做挂载，以防止容器内部操作影响到主机
+    working_dir: /app
+      # 先不执行对应的make命令
+      #  command: /bin/bash -c "make && ./app"  # 进入容器后执行make和应用程序
+    depends_on:
+      #   - mysql
+      - nginx  
+    ports:
+      - "9006:9006" 
+       # 映射 9006 端口
+networks:
+  mynetwork:
+    driver: bridge
+

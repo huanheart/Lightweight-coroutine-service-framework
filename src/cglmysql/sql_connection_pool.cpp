@@ -49,6 +49,7 @@ void Connection_pool::init(std::string url, std::string user,std::string passwd,
        conn_list.push_back(con); //放入一个连接
        ++m_free_conn; //因为还没有用到刚刚才放进去的这个连接，固然在池子里面的连接多了一个
     }
+	// std::cout<<"now free_conn: "<<m_free_conn<<std::endl;
     reserve=Sem(m_free_conn); //信号量初始化，匿名对象给到拷贝，被创建即被析构
     m_max_conn=m_free_conn; //m_free_conn这个和刚开始的最大连接数是一样的，因为在内部将这个空闲的给++了
 }
@@ -78,7 +79,7 @@ bool Connection_pool::release_connection(MYSQL*con)
     if(con==nullptr)
         return false;
     lock.lock();
-    
+    // std::cout<<"back a connection "<<con<<std::endl;
     conn_list.push_back(con); //回归到池子里
     ++m_free_conn;
     --m_cur_conn;
