@@ -19,7 +19,10 @@ const char *error_500_title = "Internal Error";
 const char *error_500_form = "There was an unusual problem serving the request file.\n";
 
 std::mutex m_lock;
-FindCache<std::string,MemoryPool<std::string> > users;
+//FindCache<std::string,MemoryPool<std::string> > users;
+//替换为更权威的LRU数据结构
+LRUCache<std::string,std::string,MemoryPool<std::string> > users;
+
 //（注意，这个不能放入到http_conn.h中）因为每个用户对应了很多个http类，而不是全局的users来进行管理
 //但是放入到这里就可以做到全局的一个管理了(即所有用户的数据都存储到这个地方)
 
@@ -485,9 +488,10 @@ http_conn::HTTP_CODE http_conn::do_request(bool & decide_proxy)
         strcat(sql_insert, password);
         strcat(sql_insert, "')");
         //上面这一个主要是拼接一个sql语句而已
-        BackNode<std::string> back;
-        back=users.find(name);
-        if(back.index==f_end) //说明没有找到,用户表维护在一个map中
+//        BackNode<std::string> back;
+//        back=users.find(name);
+        pair<bool,std::string> back=users.get(name);
+        if(back.first==false) //说明没有找到,用户表维护在一个map中
         {
             m_lock.lock();
 	    // std::cout<<"test mysql address "<<mysql<<std::endl;
@@ -507,10 +511,10 @@ http_conn::HTTP_CODE http_conn::do_request(bool & decide_proxy)
     }
       else if (*(p + 1) == '2')
       {
-        BackNode<std::string> back;
-        back=users.find(name);
+//        BackNode<std::string> back;
+        pair<bool,std::string> back=users.get(name);
 
-        if(back.index!=f_end && back.passwd==password)
+        if(back.first==true && back.second==password)
             strcpy(m_url, "/welcome.html");
         else 
             strcpy(m_url, "/logError.html");
